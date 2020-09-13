@@ -87,7 +87,7 @@ sudo apt --assume-yes install zsh
 sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 chsh -s $(which zsh)
 
-cp "$(curl https://raw.githubusercontent.com/eQuantin/Setup/master/.zshrc)" ${HOME}/.zshrc
+echo "$(curl https://raw.githubusercontent.com/eQuantin/Setup/master/.zshrc)" >> ${HOME}/.zshrc
 
 echo "CHANGE TIME SYSTEM"
 timedatectl set-local-rtc 1 --adjust-system-clock
