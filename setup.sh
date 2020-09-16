@@ -112,4 +112,4 @@ sudo apt update
 sudo apt --assume-yes upgrade
 
 # REBOOT SYSTEM
-sudo reboot
+echo "\nYOU SHOULD RESTART YOUR SYSTEM\n"
