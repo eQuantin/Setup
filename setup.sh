@@ -96,6 +96,7 @@ echo "GIT CONFIGURATION"
 # todo
 
 echo "SET WALLPAPER"
+git clone https://github.com/eQuantin/wallpapers.git ${HOME}/Pictures/wallpapers
 gsettings set org.gnome.desktop.background picture-uri file://${PWD}/wallpapers/Our_moon_in_HDR.png
 
 echo "SET HOTKEYS"
