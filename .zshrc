@@ -98,3 +98,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias copy="xclip -sel clip"
+alias update="sudo apt update"
+alias upgrade="sudo apt update && sudo apt --assume-yes upgrade"
