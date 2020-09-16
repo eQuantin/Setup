@@ -108,5 +108,8 @@ echo "SET HOTKEYS"
 #Grab an area: screen gnome-screenshot -a
 #Send the grab to the clipboard: gnome-screenshot -c
 
+sudo apt update
+sudo apt --assume-yes upgrade
+
 # REBOOT SYSTEM
 sudo reboot
