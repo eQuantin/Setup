@@ -25,6 +25,10 @@ echo "\nINSTALLING LIBRE OFFICE\n"
 sudo apt --assume-yes install libreoffice
 echo "\nINSTALLING SNAP\n"
 sudo apt --assume-yes install snapd
+echo "\nINSTALLING NODE JS\n"
+sudo apt --assume-yes install npm
+echo "\nINSTALLING PYTHON\n"
+sudo apt --assume-yes install python3
 echo "\nINSTALLING GOOGLE CHROME\n"
 sudo sh -c 'echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
