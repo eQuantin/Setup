@@ -1,7 +1,3 @@
-#EXTEND SUDO TIMEOUT
-echo "\nTRY TO EXTEND SUDO TIMEOUT\n(will most likely fail)\n"
-sudo echo "Defaults:${USER} timestamp_timeout=120" >> /etc/sudoers
-
 # BASICS
 sudo apt update
 sudo apt --assume-yes upgrade
@@ -89,7 +85,6 @@ sudo snap install rambox
 echo "INSTALLING ZSH & OH MY ZSH"
 sudo apt --assume-yes install zsh
 sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-chsh -s $(which zsh)
 
 echo "$(curl https://raw.githubusercontent.com/eQuantin/Setup/master/.zshrc)" >> ${HOME}/.zshrc
 
@@ -113,3 +108,5 @@ sudo apt --assume-yes upgrade
 
 # REBOOT SYSTEM
 echo "\nYOU SHOULD RESTART YOUR SYSTEM\n"
+
+chsh -s $(which zsh)
