@@ -80,6 +80,8 @@ echo "\nINSTALLING DRAWIO\n"
 sudo snap install drawio
 echo "\nINSTALLING RAMBOX\n"
 sudo snap install rambox
+echo "\nINSTALLING DBEAVER-CE\n"
+sudo snap install dbeaver-ce
 
 # CONFIGURE ENVIRONNEMENT
 echo "\nINSTALLING ZSH & OH MY ZSH\n"
