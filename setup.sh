@@ -1,6 +1,3 @@
-echo "user : ${USER}\n"
-echo "home: ${HOME}\n"
-
 # BASICS
 sudo apt update
 sudo apt --assume-yes upgrade
@@ -89,7 +86,7 @@ echo "\nINSTALLING ZSH & OH MY ZSH\n"
 sudo apt --assume-yes install zsh
 sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-echo "$(curl https://raw.githubusercontent.com/eQuantin/Setup/master/.zshrc)" >> ~/.zshrc
+echo "$(curl https://raw.githubusercontent.com/eQuantin/Setup/master/.zshrc)" >> /home/danaen/.zshrc
 
 echo "\nCHANGE TIME SYSTEM\n"
 timedatectl set-local-rtc 1 --adjust-system-clock
@@ -98,8 +95,8 @@ echo "\nGIT CONFIGURATION\n"
 # todo
 
 echo "\nSET WALLPAPER\n"
-git clone https://github.com/eQuantin/wallpapers.git ~/Pictures/wallpapers
-gsettings set org.gnome.desktop.background picture-uri file://~/Pictures/wallpapers/Our_moon_in_HDR.png
+git clone https://github.com/eQuantin/wallpapers.git /home/danaen/Pictures/wallpapers
+gsettings set org.gnome.desktop.background picture-uri file:///home/danaen/Pictures/wallpapers/Our_moon_in_HDR.png
 
 echo "\nSET HOTKEYS\n"
 #Grab a window: screen gnome-screenshot -w
