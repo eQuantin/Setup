@@ -84,7 +84,7 @@ sudo snap install rambox
 # CONFIGURE ENVIRONNEMENT
 echo "\nINSTALLING ZSH & OH MY ZSH\n"
 sudo apt --assume-yes install zsh
-sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo "$(curl https://raw.githubusercontent.com/eQuantin/Setup/master/.zshrc)" >> /home/danaen/.zshrc
 
