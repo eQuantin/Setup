@@ -1,3 +1,6 @@
+echo "user : ${USER}\n"
+echo "home: ${HOME}\n"
+
 # BASICS
 sudo apt update
 sudo apt --assume-yes upgrade
@@ -82,23 +85,23 @@ echo "\nINSTALLING RAMBOX\n"
 sudo snap install rambox
 
 # CONFIGURE ENVIRONNEMENT
-echo "INSTALLING ZSH & OH MY ZSH"
+echo "\nINSTALLING ZSH & OH MY ZSH\n"
 sudo apt --assume-yes install zsh
 sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-echo "$(curl https://raw.githubusercontent.com/eQuantin/Setup/master/.zshrc)" >> ${HOME}/.zshrc
+echo "$(curl https://raw.githubusercontent.com/eQuantin/Setup/master/.zshrc)" >> ~/.zshrc
 
-echo "CHANGE TIME SYSTEM"
+echo "\nCHANGE TIME SYSTEM\n"
 timedatectl set-local-rtc 1 --adjust-system-clock
 
-echo "GIT CONFIGURATION"
+echo "\nGIT CONFIGURATION\n"
 # todo
 
-echo "SET WALLPAPER"
-git clone https://github.com/eQuantin/wallpapers.git /home/${USER}/Pictures/wallpapers
-gsettings set org.gnome.desktop.background picture-uri file://home/${USER}/wallpapers/Our_moon_in_HDR.png
+echo "\nSET WALLPAPER\n"
+git clone https://github.com/eQuantin/wallpapers.git ~/Pictures/wallpapers
+gsettings set org.gnome.desktop.background picture-uri file://~/Pictures/wallpapers/Our_moon_in_HDR.png
 
-echo "SET HOTKEYS"
+echo "\nSET HOTKEYS\n"
 #Grab a window: screen gnome-screenshot -w
 #Grab an area: screen gnome-screenshot -a
 #Send the grab to the clipboard: gnome-screenshot -c
