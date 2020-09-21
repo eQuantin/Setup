@@ -1,1 +1,1 @@
-sudo sh -c "$(curl https://raw.githubusercontent.com/eQuantin/Setup/master/setup.sh)"
+sh -c "$(curl https://raw.githubusercontent.com/eQuantin/Setup/master/setup.sh)"
