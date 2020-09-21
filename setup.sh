@@ -84,12 +84,6 @@ echo "\nINSTALLING DBEAVER-CE\n"
 sudo snap install dbeaver-ce
 
 # CONFIGURE ENVIRONNEMENT
-echo "\nINSTALLING ZSH & OH MY ZSH\n"
-sudo apt --assume-yes install zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-echo "$(curl https://raw.githubusercontent.com/eQuantin/Setup/master/.zshrc)" >> /home/danaen/.zshrc
-
 echo "\nCHANGE TIME SYSTEM\n"
 timedatectl set-local-rtc 1 --adjust-system-clock
 
@@ -111,4 +105,9 @@ sudo apt --assume-yes upgrade
 # REBOOT SYSTEM
 echo "\nYOU SHOULD RESTART YOUR SYSTEM\n"
 
+echo "\nINSTALLING ZSH & OH MY ZSH\n"
+sudo apt --assume-yes install zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+rm /home/danaen/.zshrc
+echo "$(curl https://raw.githubusercontent.com/eQuantin/Setup/master/.zshrc)" >> /home/danaen/.zshrc
 chsh -s $(which zsh)
