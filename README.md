@@ -4,6 +4,7 @@ ISSUE :
   - install process is user name dependant
   - if wallpapers directory already exist git will not clone wallpapers repo
   - script should ask to logout at the end even if user change his shell
+  - vsc --user-data-dir not specified
   
  TO DO: 
   - sync directory
