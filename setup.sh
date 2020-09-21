@@ -127,6 +127,5 @@ echo "\nYOU SHOULD RESTART YOUR SYSTEM\n"
 echo "\nINSTALLING ZSH & OH MY ZSH\n"
 sudo apt --assume-yes install zsh
 ZSH=/home/danaen/.ohmyzsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended --keep-zshrc
 echo "$(curl https://raw.githubusercontent.com/eQuantin/Setup/master/.zshrc)" >> /home/danaen/.zshrc
-chsh -s $(which zsh)
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --keep-zshrc
