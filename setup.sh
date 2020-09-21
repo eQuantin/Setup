@@ -90,6 +90,25 @@ timedatectl set-local-rtc 1 --adjust-system-clock
 echo "\nGIT CONFIGURATION\n"
 # todo
 
+echo "\nVISUAL STUDIO CODE CONFIGURATION\n"
+# code --install-extension
+code --install-extension atlassian.atlascode
+code --install-extension angular.ng-template
+code --install-extension esbenp.prettier-vscode
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension msjsdiag.debugger-for-chrome
+code --install-extension pkief.material-icon-theme
+code --install-extension eg2.vscode-npm-script
+code --install-extension editorconfig.editorconfig
+code --install-extension johnpapa.vscode-peacock
+code --install-extension alexiv.vscode-angular2-files
+code --install-extension equinusocio.vsc-material-theme
+code --install-extension eamodio.gitlens
+code --install-extension ms-vscode.cpptools
+code --install-extension ms-dotnettools.csharp
+code --install-extension ms-azuretools.vscode-docker
+code --install-extension ms-python.python
+
 echo "\nSET WALLPAPER\n"
 git clone https://github.com/eQuantin/wallpapers.git /home/danaen/Pictures/wallpapers
 gsettings set org.gnome.desktop.background picture-uri file:///home/danaen/Pictures/wallpapers/Our_moon_in_HDR.png
