@@ -15,3 +15,4 @@ ISSUE :
   - set hotkeys
   - git configuration
   - gnome configuration
+  - add ferdi

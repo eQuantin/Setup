@@ -1,27 +1,36 @@
-#!/bin/bash
+#!/bin/zsh
 
-# BASICS
-write()
-{
-	tput sc
-	printf 	"	%s ..." $1
-}
-
-correct()
-{
-	tput rc;tput el
-	printf	"\e[1;32mV\e[0m	%s\n" $1
-}
+home=$1
 
 upgrade()
 {
-	write 	"\"Updating packages"\"
+	tput sc
+	printf 	"	Updating packages..."
 	sudo apt update > /dev/null 2>&1
-	correct	"\"Packages updated"\"
+	if [ $? != 0 ]; 
+	then
+    	printf "\n\nThat update didn't work out so well. Trying some fancy stuff..."
+    	sleep 3
+    	rm -rf /var/lib/apt/lists/* -vf
+    	sudo apt update -f > /dev/null 2>&1 || tput rc; tput ed && printf "\e[1;31mX\e[0m	Packages updated\n" && echo "\nThe errors have overwhelmed us, bro.\n" && exit 1
+	fi
+	tput rc;tput el
+	printf	"\e[1;32mV\e[0m	Packages updated\n"
 
-	write 	"\"Upgrading packages"\"
+	tput sc
+	printf 	"	Upgrading packages..."
 	sudo apt --assume-yes upgrade > /dev/null 2>&1
-	correct "\"Packages upgraded"\"
+	if [ $? != 0 ]; 
+	then
+    	printf "\n\nThat upgrade didn't work out so well. Trying some fancy stuff..."
+    	sleep 3
+#    	rm -rf /var/lib/apt/lists/* -vf
+    	sudo apt --assume-yes upgrade -f > /dev/null 2>&1 || tput rc;tput ed && printf	"\e[1;31mX\e[0m	Packages upgraded\n" && echo "\nThe errors have overwhelmed us, bro.\n" && exit 1
+	fi
+	tput rc;tput el
+	printf "\e[1;32mV\e[0m	Packages upgraded\n"
+
+	exit 0
 }
 
 packages()
@@ -77,18 +86,12 @@ snap()
 	sudo snap install postman
 	echo "\nINSTALLING SLACK\n"
 	sudo snap install slack --classic
-	echo "\nINSTALLING ROCKETCHAT\n"
-	sudo snap install rocketchat-desktop
 	echo "\nINSTALLING DISCORD\n"
 	sudo snap install discord
 	echo "\nINSTALLING GITTER\n"
 	sudo snap install gitter-desktop
-	echo "\nINSTALLING CAPRINE\n"
-	sudo snap install caprine
 	echo "\nINSTALLING OPERA\n"
 	sudo snap install opera-developer
-	echo "\nINSTALLING WHATSAPP\n"
-	sudo snap install kesty-whatsapp
 	echo "\nINSTALLING MAILSPRING\n"
 	sudo snap install mailspring
 	echo "\nINSTALLING VISUAL STUDIO CODE\n"
@@ -97,8 +100,6 @@ snap()
 	sudo snap install sublime-text --classic
 	echo "\nINSTALLING GIT KRAKEN\n"
 	sudo snap install gitkraken --classic
-	echo "\nINSTALLING NODE-RED\n"
-	sudo snap install node-red
 	echo "\nINSTALLING VLC\n"
 	sudo snap install vlc
 	echo "\nINSTALLING PYCHARM\n"
@@ -111,14 +112,10 @@ snap()
 	sudo snap install phpstorm --classic
 	echo "\nINSTALLING ZENKIT\n"
 	sudo snap install zenkit
-	echo "\nINSTALLING FROMSCRATCH\n"
-	sudo snap install fromscratch
 	echo "\nINSTALLING KATA CONTAINERS\n"
 	sudo snap install kata-containers --classic
 	echo "\nINSTALLING DRAWIO\n"
 	sudo snap install drawio
-	echo "\nINSTALLING RAMBOX\n"
-	sudo snap install rambox
 	echo "\nINSTALLING DBEAVER-CE\n"
 	sudo snap install dbeaver-ce
 }
@@ -137,26 +134,26 @@ config()
 
 	echo "\nVISUAL STUDIO CODE CONFIGURATION\n"
 	# code --install-extension
-	code --install-extension atlassian.atlascode --user-data-dir /home/danaen/.vscode
-	code --install-extension angular.ng-template --user-data-dir /home/danaen/.vscode
-	code --install-extension esbenp.prettier-vscode --user-data-dir /home/danaen/.vscode
-	code --install-extension dbaeumer.vscode-eslint --user-data-dir /home/danaen/.vscode
-	code --install-extension msjsdiag.debugger-for-chrome --user-data-dir /home/danaen/.vscode
-	code --install-extension pkief.material-icon-theme --user-data-dir /home/danaen/.vscode
-	code --install-extension eg2.vscode-npm-script --user-data-dir /home/danaen/.vscode
-	code --install-extension editorconfig.editorconfig --user-data-dir /home/danaen/.vscode
-	code --install-extension johnpapa.vscode-peacock --user-data-dir /home/danaen/.vscode
-	code --install-extension alexiv.vscode-angular2-files --user-data-dir /home/danaen/.vscode
-	code --install-extension equinusocio.vsc-material-theme --user-data-dir /home/danaen/.vscode
-	code --install-extension eamodio.gitlens --user-data-dir /home/danaen/.vscode
-	code --install-extension ms-vscode.cpptools --user-data-dir /home/danaen/.vscode
-	code --install-extension ms-dotnettools.csharp --user-data-dir /home/danaen/.vscode
-	code --install-extension ms-azuretools.vscode-docker --user-data-dir /home/danaen/.vscode
-	code --install-extension ms-python.python --user-data-dir /home/danaen/.vscode
+	code --install-extension atlassian.atlascode --user-data-dir $home/.vscode
+	code --install-extension angular.ng-template --user-data-dir $home/.vscode
+	code --install-extension esbenp.prettier-vscode --user-data-dir $home/.vscode
+	code --install-extension dbaeumer.vscode-eslint --user-data-dir $home/.vscode
+	code --install-extension msjsdiag.debugger-for-chrome --user-data-dir $home/.vscode
+	code --install-extension pkief.material-icon-theme --user-data-dir $home/.vscode
+	code --install-extension eg2.vscode-npm-script --user-data-dir $home/.vscode
+	code --install-extension editorconfig.editorconfig --user-data-dir $home/.vscode
+	code --install-extension johnpapa.vscode-peacock --user-data-dir $home/.vscode
+	code --install-extension alexiv.vscode-angular2-files --user-data-dir $home/.vscode
+	code --install-extension equinusocio.vsc-material-theme --user-data-dir $home/.vscode
+	code --install-extension eamodio.gitlens --user-data-dir $home/.vscode
+	code --install-extension ms-vscode.cpptools --user-data-dir $home/.vscode
+	code --install-extension ms-dotnettools.csharp --user-data-dir $home/.vscode
+	code --install-extension ms-azuretools.vscode-docker --user-data-dir $home/.vscode
+	code --install-extension ms-python.python --user-data-dir $home/.vscode
 
 	echo "\nSET WALLPAPER\n"
-	git clone https://github.com/eQuantin/wallpapers.git /home/danaen/Pictures/wallpapers
-	gsettings set org.gnome.desktop.background picture-uri file:///home/danaen/Pictures/wallpapers/Our_moon_in_HDR.png
+	git clone https://github.com/eQuantin/wallpapers.git $home/Pictures/wallpapers
+	gsettings set org.gnome.desktop.background picture-uri file:///$home/Pictures/wallpapers/Our_moon_in_HDR.png
 
 	echo "\nSET HOTKEYS\n"
 	#Grab a window: screen gnome-screenshot -w
@@ -166,7 +163,7 @@ config()
 
 	echo "\nINSTALLING ZSH & OH MY ZSH\n"
 	ZSH=/home/danaen/.ohmyzsh
-	echo "$(curl https://raw.githubusercontent.com/eQuantin/Setup/master/.zshrc)" >> /home/danaen/.zshrc
+	echo "$(curl https://raw.githubusercontent.com/eQuantin/Setup/master/.zshrc)" >> /$home/.zshrc
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --keep-zshrc
 }
 
@@ -175,15 +172,21 @@ main ()
 	if [ "$EUID" -ne 0 ]
   	then 
 		echo "Please run as root"
-  		exit
+  		exit 1
 	fi
 
 	printf "\n"
 	upgrade
-	#printf "\n"
-	#packages
-	#printf "\n"
-	#apt
+	printf "\n"
+	packages
+	printf "\n"
+	apt
+	printf "\n"
+	snap
+	printf "\n"
+	config
+	exit 0
 }
 
 main
+exit 0
