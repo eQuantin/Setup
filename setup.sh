@@ -174,6 +174,8 @@ main ()
 		echo "Please run as root"
   		exit 1
 	fi
+	
+	echo $home
 
 	printf "\n"
 	upgrade
